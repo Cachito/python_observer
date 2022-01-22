@@ -3,6 +3,12 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import QTimer
 from manager import ManagerView
 from views.observable import ObservableView
+from views.observer import ObserverView
+
+class ObserverWindow(QtWidgets.QMainWindow, ObserverView):
+    def __init__(self, parent=None):
+        super(ObserverWindow, self).__init__(parent)
+        self.setupUi(self)
 
 class ObservableWindow(QtWidgets.QMainWindow, ObservableView):
     def __init__(self, parent=None):
@@ -14,19 +20,29 @@ class ManagerWindow(QtWidgets.QMainWindow, ManagerView):
         super(ManagerWindow, self).__init__(parent)
         self.setupUi(self)
         self.btn_iniciar_observable.clicked.connect(self.show_observable)
-        self.observable_windows = []
+        self.btn_iniciar_observador.clicked.connect(self.show_observador)
+        self.lista_observables = []
+        self.lista_observadores = []
 
     @QtCore.pyqtSlot()
     def show_observable(self):
-        print(self.observable_windows)
-        print(len(self.observable_windows))
-
-        if(len(self.observable_windows) == 1):
+        if(len(self.lista_observables) == 1):
+            print("Ya ha iniciado el observable.")
             return
-            
+
         observable_window = ObservableWindow()
         observable_window.show()
-        self.observable_windows.append(observable_window)
+        self.lista_observables.append(observable_window)
+
+    @QtCore.pyqtSlot()
+    def show_observador(self):
+        if(len(self.lista_observables) < 1):
+            print("Debe iniciar el observable primero.")
+            return
+
+        observer_window = ObserverWindow()
+        observer_window.show()
+        self.lista_observadores.append(observer_window)
 
 if __name__ == "__main__":
     # Código del cliente.
