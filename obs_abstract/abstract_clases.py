@@ -2,7 +2,6 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from random import randrange
 from typing import List
-from observer import Observer
 
 class Observable(ABC):
     """
@@ -27,5 +26,18 @@ class Observable(ABC):
     def notify(self) -> None:
         """
         Notifica sobre un evento a todos los observadores.
+        """
+        pass
+
+class Observer(ABC):
+    """
+    La interfaz de Observer declara el método de actualización (update),
+    utilizado por los observables.
+    """
+
+    @abstractmethod
+    def update(self, subject: Observable) -> None:
+        """
+        Recibir actualización del observable.
         """
         pass
