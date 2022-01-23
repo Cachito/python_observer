@@ -27,7 +27,7 @@ class ManagerView(object):
         ManagerView.setMinimumSize(551, 143)
         ManagerView.setWindowFlag(QtCore.Qt.WindowCloseButtonHint, False)
         icon_form = QtGui.QIcon()
-        icon_form.addPixmap(QtGui.QPixmap("./imagenes/manager_2.ico"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        icon_form.addPixmap(QtGui.QPixmap("./imagenes/manager.ico"), QtGui.QIcon.Normal, QtGui.QIcon.On)
         ManagerView.setWindowIcon(icon_form)
         ManagerView.setWindowTitle("Manager")
 

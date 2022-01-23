@@ -23,7 +23,7 @@ class ObserverView(object):
         ObserverView.setMinimumSize(QtCore.QSize(300, 200))
         ObserverView.setMaximumSize(QtCore.QSize(300, 200))
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("../Imagenes/manager.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("../Imagenes/manager.ico"), QtGui.QIcon.Normal, QtGui.QIcon.On)
         ObserverView.setWindowIcon(icon)
         ObserverView.setWindowTitle("Observador")
 
