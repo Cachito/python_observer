@@ -29,10 +29,11 @@ class ObservableView(QDialog):
         ObservableView.setMinimumSize(QtCore.QSize(400, 200))
         ObservableView.setMaximumSize(QtCore.QSize(400, 200))
         ObservableView.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
+        ObservableView.setWindowFlag(QtCore.Qt.WindowCloseButtonHint, False)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("../Imagenes/manager.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("./Imagenes/manager.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         ObservableView.setWindowIcon(icon)
-        ObservableView.setWindowTitle("Observable (o Subject)")
+        ObservableView.setWindowTitle("Estación Meteorológica")
 
         # label state
         self.lbl_state = QtWidgets.QLabel(ObservableView)
@@ -72,15 +73,15 @@ class ObservableView(QDialog):
         ObservableView.show()
 
     def attach(self, observer: Observer) -> None:
-        print("Observable: adjunto un observador (ObservableView).")
         self.observable.attach(observer)
+        self.lbl_count.setText(f"Observers: {len(self.observable._observers)}")
 
     def detach(self, observer: Observer) -> None:
-        print("Observable: Quito un observador (ObservableView).")
-        self.observable.remove(observer)
+        self.observable.detach(observer)
+        self.lbl_count.setText(f"Observers: {len(self.observable._observers)}")
 
     def update(self):
-        print("update")
+        self.observable.informa_temperatura()
 
     @property
     def observable(self) -> Observable:
@@ -89,4 +90,4 @@ class ObservableView(QDialog):
     @observable.setter
     def observable(self, valor):
         self._observable = valor
-        print(valor)
+        self.lbl_state.setText("Observable iniciado.")

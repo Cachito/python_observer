@@ -3,9 +3,9 @@ import random
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import QTimer
 from django.forms import EmailField
-from manager import ManagerView
-from views.observable import ObservableView
-from views.observer import ObserverView
+from views.manager_view import ManagerView
+from views.observable_view import ObservableView
+from views.observer_view import ObserverView
 from obs_abstract.abstract_clases import Observable
 from obs_abstract.abstract_clases import Observer
 from obs_concrete.concrete_clases import ServicioMeteorologico
@@ -48,11 +48,13 @@ class ManagerWindow(QtWidgets.QMainWindow, ManagerView):
             print("Debe iniciar el observable primero.")
             return
 
+        observable_obj = self.lista_observables[0]
+
         observer_obj = self.get_observer_type()
         observer_window = ObserverWindow()
         observer_window.observer = observer_obj
+        observer_window.observable = observable_obj
 
-        observable_obj = self.lista_observables[0]
         observable_obj.attach(observer_obj)
 
         observer_window.show()

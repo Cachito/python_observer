@@ -60,15 +60,12 @@ class ServicioMeteorologico(Observable):
 
 class Archivo(Observer):
     def update(self, observable: Observable) -> None:
-        if observable._state == 1:
-            print("Archivo: reaccionó al evento")
+        print(f"Archivo: reaccionó al evento: state: {observable._state}")
 
 class Laptop(Observer):
     def update(self, observable: Observable) -> None:
-        if observable._state == 0 or observable._state >= 2:
-            print("laptop: reaccionó al evento")
+        print(f"laptop: reaccionó al evento: state: {observable._state}")
 
 class Telefono(Observer):
     def update(self, observable: Observable) -> None:
-        if observable._state < 3:
-            print("Telefono: reaccionó al evento")
+        print(f"Telefono: reaccionó al evento: state: {observable._state}")

@@ -9,6 +9,10 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 import sys
+from obs_abstract.abstract_clases import Observable
+from obs_abstract.abstract_clases import Observer
+from obs_concrete.concrete_clases import ServicioMeteorologico
+from obs_concrete.concrete_clases import Telefono, Laptop, Archivo
 
 class ObserverView(object):
     def setupUi(self, ObserverView):
@@ -22,10 +26,11 @@ class ObserverView(object):
         ObserverView.setSizePolicy(sizePolicy)
         ObserverView.setMinimumSize(QtCore.QSize(300, 200))
         ObserverView.setMaximumSize(QtCore.QSize(300, 200))
+        ObserverView.setWindowFlag(QtCore.Qt.WindowCloseButtonHint, False)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("../Imagenes/manager.ico"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        icon.addPixmap(QtGui.QPixmap("./imagenes/manager.ico"), QtGui.QIcon.Normal, QtGui.QIcon.On)
         ObserverView.setWindowIcon(icon)
-        ObserverView.setWindowTitle("Observador")
+        ObserverView.setWindowTitle("Observer")
 
         # label tipo de display
         self.lbl_display = QtWidgets.QLabel(ObserverView)
@@ -58,7 +63,30 @@ class ObserverView(object):
         self.btn_detach.setFont(font)
         self.btn_detach.setObjectName("btn_detach")
         self.btn_detach.setText("Detach")
+        self.btn_detach.clicked.connect(self.detach_me)
 
         QtCore.QMetaObject.connectSlotsByName(ObserverView)
 
         ObserverView.show()
+
+    def detach_me(self):
+        self.observable.detach(self.observer)
+        self.destroy()
+
+    @property
+    def observer(self) -> Observer:
+        return self._observer
+
+    @observer.setter
+    def observer(self, valor):
+        self._observer = valor
+        tipo = type(valor)
+        self.lbl_display.setText(f"{tipo.__name__} display")
+
+    @property
+    def observable(self) -> Observable:
+        return self._observable
+
+    @observable.setter
+    def observable(self, valor):
+        self._observable = valor

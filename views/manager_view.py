@@ -15,7 +15,7 @@ from PyQt5.QtWidgets import QMainWindow
 from obs_abstract.abstract_clases import Observer
 from obs_concrete.concrete_clases import Archivo, Laptop, Telefono
 from obs_concrete.concrete_clases import ServicioMeteorologico
-from views.observable import ObservableView
+from views.observable_view import ObservableView
 
 
 class ManagerView(object):
