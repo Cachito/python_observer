@@ -23,10 +23,11 @@ class ServicioMeteorologico(Observable):
     """
 
     def attach(self, observer: Observer) -> None:
-        print("Observable: Adjunto un observador.")
+        print("Observable: Adjunto un observador (ServicioMeteorologico).")
         self._observers.append(observer)
 
     def detach(self, observer: Observer) -> None:
+        print("Observable: Quito un observador (ServicioMeteorologico).")
         self._observers.remove(observer)
 
     """
@@ -42,7 +43,7 @@ class ServicioMeteorologico(Observable):
         for observer in self._observers:
             observer.update(self)
 
-    def some_business_logic(self) -> None:
+    def informa_temperatura(self) -> None:
         """
         Por lo general, la lógica de suscripción es solo una fracción
         de lo que realmente puede hacer un Observable.
@@ -52,22 +53,19 @@ class ServicioMeteorologico(Observable):
         """
 
         print("\nObservable: Estoy haciendo algo importante.")
-        self._state = randrange(0, 10)
+        self._state = randrange(-10, 40)
 
         print(f"Observable: Mi estado acaba de cambiar a: {self._state}")
         self.notify()
 
 class Archivo(Observer):
     def update(self, observable: Observable) -> None:
-        if observable._state == 1:
-            print("Archivo: reaccionó al evento")
+        print(f"Archivo: reaccionó al evento: state: {observable._state}")
 
 class Laptop(Observer):
     def update(self, observable: Observable) -> None:
-        if observable._state == 0 or observable._state >= 2:
-            print("laptop: reaccionó al evento")
+        print(f"laptop: reaccionó al evento: state: {observable._state}")
 
 class Telefono(Observer):
     def update(self, observable: Observable) -> None:
-        if observable._state < 3:
-            print("Telefono: reaccionó al evento")
+        print(f"Telefono: reaccionó al evento: state: {observable._state}")

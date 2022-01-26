@@ -15,7 +15,7 @@ from PyQt5.QtWidgets import QMainWindow
 from obs_abstract.abstract_clases import Observer
 from obs_concrete.concrete_clases import Archivo, Laptop, Telefono
 from obs_concrete.concrete_clases import ServicioMeteorologico
-from views.observable import ObservableView
+from views.observable_view import ObservableView
 
 
 class ManagerView(object):
@@ -27,7 +27,7 @@ class ManagerView(object):
         ManagerView.setMinimumSize(551, 143)
         ManagerView.setWindowFlag(QtCore.Qt.WindowCloseButtonHint, False)
         icon_form = QtGui.QIcon()
-        icon_form.addPixmap(QtGui.QPixmap("./imagenes/manager_2.ico"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        icon_form.addPixmap(QtGui.QPixmap("./imagenes/manager.ico"), QtGui.QIcon.Normal, QtGui.QIcon.On)
         ManagerView.setWindowIcon(icon_form)
         ManagerView.setWindowTitle("Manager")
 
