@@ -68,6 +68,7 @@ class ObserverView(object):
 
     def detach_me(self):
         self.observable.detach(self.observer)
+        self.observable.detach_view(self)
         self.destroy()
 
     @property

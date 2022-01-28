@@ -2,6 +2,7 @@ from typing import List
 from random import randrange
 from obs_abstract.abstract_clases import Observer
 from obs_abstract.abstract_clases import Observable
+from views.observer_view import ObserverView
 
 class ServicioMeteorologico(Observable):
     """
@@ -16,6 +17,8 @@ class ServicioMeteorologico(Observable):
     """
 
     _observers: List[Observer] = []
+    _observer_views: List[ObserverView] = []
+    
     """
     Lista de suscriptores.
     En la vida real, la lista de suscriptores se puede almacenar de manera más completa
