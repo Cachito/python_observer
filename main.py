@@ -1,13 +1,10 @@
 import sys
 import random
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtCore import QTimer
-from django.forms import EmailField
+from PyQt5 import QtCore
+from PyQt5 import QtWidgets
 from views.manager_view import ManagerView
 from views.observable_view import ObservableView
 from views.observer_view import ObserverView
-from obs_abstract.abstract_clases import Observable
-from obs_abstract.abstract_clases import Observer
 from obs_concrete.concrete_clases import ServicioMeteorologico
 from obs_concrete.concrete_clases import Telefono, Laptop, Archivo
 

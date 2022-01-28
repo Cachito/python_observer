@@ -10,11 +10,9 @@
 from typing import List
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import (QApplication, QMainWindow, QDialog, QLineEdit, QPushButton, QLabel)
+from PyQt5.QtWidgets import QDialog
 from obs_abstract.abstract_clases import Observable
 from obs_abstract.abstract_clases import Observer
-from obs_concrete.concrete_clases import ServicioMeteorologico
-from obs_concrete.concrete_clases import Telefono, Laptop, Archivo
 
 class ObservableView(QDialog):
     def setupUi(self, ObservableView):
