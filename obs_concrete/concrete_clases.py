@@ -2,6 +2,7 @@ from typing import List
 from random import randrange
 from obs_abstract.abstract_clases import Observer
 from obs_abstract.abstract_clases import Observable
+from views.observer_view import ObserverView
 
 class ServicioMeteorologico(Observable):
     """
@@ -16,6 +17,7 @@ class ServicioMeteorologico(Observable):
     """
 
     _observers: List[Observer] = []
+
     """
     Lista de suscriptores.
     En la vida real, la lista de suscriptores se puede almacenar de manera más completa
@@ -59,13 +61,46 @@ class ServicioMeteorologico(Observable):
         self.notify()
 
 class Archivo(Observer):
+    @property
+    def observer_view(self) -> ObserverView:
+        return self._observer_view
+
+    @observer_view.setter
+    def observer_view(self, valor):
+        self._observer_view = valor
+        tipo = type(self)
+        self._observer_view.lbl_display.setText(f"{tipo.__name__} display")
+
     def update(self, observable: Observable) -> None:
         print(f"Archivo: reaccionó al evento: state: {observable._state}")
+        self.observer_view.lbl_state.setText(f"Temperatura: {observable._state}°")
 
 class Laptop(Observer):
+    @property
+    def observer_view(self) -> ObserverView:
+        return self._observer_view
+
+    @observer_view.setter
+    def observer_view(self, valor):
+        self._observer_view = valor
+        tipo = type(self)
+        self._observer_view.lbl_display.setText(f"{tipo.__name__} display")
+
     def update(self, observable: Observable) -> None:
         print(f"laptop: reaccionó al evento: state: {observable._state}")
+        self.observer_view.lbl_state.setText(f"Temperatura: {observable._state}°")
 
 class Telefono(Observer):
+    @property
+    def observer_view(self) -> ObserverView:
+        return self._observer_view
+
+    @observer_view.setter
+    def observer_view(self, valor):
+        self._observer_view = valor
+        tipo = type(self)
+        self._observer_view.lbl_display.setText(f"{tipo.__name__} display")
+
     def update(self, observable: Observable) -> None:
         print(f"Telefono: reaccionó al evento: state: {observable._state}")
+        self.observer_view.lbl_state.setText(f"Temperatura: {observable._state}°")
