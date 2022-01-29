@@ -2,7 +2,6 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from random import randrange
 from typing import List
-from views.observer_view import ObserverView
 
 class Observable(ABC):
     """
@@ -11,13 +10,6 @@ class Observable(ABC):
 
     @abstractmethod
     def attach(self, observer: Observer) -> None:
-        """
-        Adjunta un observador al observable.
-        """
-        pass
-
-    @abstractmethod
-    def attach_view(self, observer: ObserverView) -> None:
         """
         Adjunta un observador al observable.
         """

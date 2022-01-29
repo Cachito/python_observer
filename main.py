@@ -6,7 +6,9 @@ from views.manager_view import ManagerView
 from views.observable_view import ObservableView
 from views.observer_view import ObserverView
 from obs_concrete.concrete_clases import ServicioMeteorologico
-from obs_concrete.concrete_clases import Telefono, Laptop, Archivo
+from obs_concrete.concrete_clases import Telefono
+from obs_concrete.concrete_clases import Laptop
+from obs_concrete.concrete_clases import Archivo
 
 class ObserverWindow(QtWidgets.QMainWindow, ObserverView):
     def __init__(self, parent=None):
@@ -48,9 +50,11 @@ class ManagerWindow(QtWidgets.QMainWindow, ManagerView):
         observable_obj = self.lista_observables[0]
 
         observer_obj = self.get_observer_type()
+
         observer_window = ObserverWindow()
-        observer_window.observer = observer_obj
+
         observer_window.observable = observable_obj
+        observer_obj.observer_view = observer_window
 
         observable_obj.attach(observer_obj)
 

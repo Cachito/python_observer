@@ -11,7 +11,7 @@ import sys
 from sys import maxsize
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-class ManagerView(object):
+class ManagerView(QtWidgets.QDialog):
     def setupUi(self, ManagerView):
         # vista
         ManagerView.setObjectName("ManagerView")
@@ -49,7 +49,6 @@ class ManagerView(object):
         self.btn_iniciar_observador.setAutoFillBackground(False)
         self.btn_iniciar_observador.setObjectName("btn_iniciar_observador")
         self.btn_iniciar_observador.setText("Iniciar\nObservador")
-        #self.btn_iniciar_observador.clicked.connect(self.show_observador)
 
         #botón terminar
         self.btn_terminar = QtWidgets.QPushButton(self.centralwidget)

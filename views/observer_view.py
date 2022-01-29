@@ -9,9 +9,9 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from obs_abstract.abstract_clases import Observable
-from obs_abstract.abstract_clases import Observer
+#from obs_abstract.abstract_clases import Observer
 
-class ObserverView(object):
+class ObserverView(QtWidgets.QDialog):
     def setupUi(self, ObserverView):
         # view
         ObserverView.setObjectName("ObserverView")
@@ -67,19 +67,18 @@ class ObserverView(object):
         ObserverView.show()
 
     def detach_me(self):
-        self.observable.detach(self.observer)
-        self.observable.detach_view(self)
+        #self.observable.detach(self.observer)
         self.destroy()
 
-    @property
-    def observer(self) -> Observer:
-        return self._observer
-
-    @observer.setter
-    def observer(self, valor):
-        self._observer = valor
-        tipo = type(valor)
-        self.lbl_display.setText(f"{tipo.__name__} display")
+    #@property
+    #def observer(self) -> Observer:
+    #    return self._observer
+#
+    #@observer.setter
+    #def observer(self, valor):
+    #    self._observer = valor
+    #    tipo = type(valor)
+    #    self.lbl_display.setText(f"{tipo.__name__} display")
 
     @property
     def observable(self) -> Observable:
