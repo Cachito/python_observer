@@ -1,3 +1,4 @@
+from msilib.schema import Control
 import sys
 import random
 from PyQt5 import QtCore
@@ -9,6 +10,7 @@ from obs_concrete.concrete_clases import ServicioMeteorologico
 from obs_concrete.concrete_clases import Telefono
 from obs_concrete.concrete_clases import Laptop
 from obs_concrete.concrete_clases import Archivo
+from modulos.controller import Controller
 
 class ObserverWindow(QtWidgets.QMainWindow, ObserverView):
     def __init__(self, parent=None):
@@ -28,6 +30,7 @@ class ManagerWindow(QtWidgets.QMainWindow, ManagerView):
         self.btn_iniciar_observador.clicked.connect(self.show_observador)
         self.lista_observables = []
         self.lista_observadores = []
+        self.controller = Controller()
 
     @QtCore.pyqtSlot()
     def show_observable(self):
@@ -56,6 +59,7 @@ class ManagerWindow(QtWidgets.QMainWindow, ManagerView):
         observer_window.observable = observable_obj
         observer_window.observer = observer_obj
         observer_obj.observer_view = observer_window
+        observer_obj.controller = self.controller
 
         observable_obj.attach(observer_obj)
 
