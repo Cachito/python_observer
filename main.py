@@ -54,6 +54,7 @@ class ManagerWindow(QtWidgets.QMainWindow, ManagerView):
         observer_window = ObserverWindow()
 
         observer_window.observable = observable_obj
+        observer_window.observer = observer_obj
         observer_obj.observer_view = observer_window
 
         observable_obj.attach(observer_obj)
