@@ -31,7 +31,7 @@ class ObservableView(QtWidgets.QDialog):
         ObservableView.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         ObservableView.setWindowFlag(QtCore.Qt.WindowCloseButtonHint, False)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("./Imagenes/manager.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("./imagenes/manager.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         ObservableView.setWindowIcon(icon)
         ObservableView.setWindowTitle("Estación Meteorológica")
 

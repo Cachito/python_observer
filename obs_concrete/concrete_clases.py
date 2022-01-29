@@ -3,6 +3,7 @@ from random import randrange
 from obs_abstract.abstract_clases import Observer
 from obs_abstract.abstract_clases import Observable
 from views.observer_view import ObserverView
+from modulos.controller import Controller
 
 class ServicioMeteorologico(Observable):
     """
@@ -62,20 +63,37 @@ class ServicioMeteorologico(Observable):
 
 class Archivo(Observer):
     @property
+    def controller(self) -> Controller:
+        return self._controller
+
+    @controller.setter
+    def controller(self, valor):
+        self._controller = valor
+
+    @property
     def observer_view(self) -> ObserverView:
         return self._observer_view
 
     @observer_view.setter
     def observer_view(self, valor):
         self._observer_view = valor
-        tipo = type(self)
-        self._observer_view.lbl_display.setText(f"{tipo.__name__} display")
+        self.tipo = type(self).__name__
+        self._observer_view.lbl_display.setText(f"{self.tipo} display")
 
     def update(self, observable: Observable) -> None:
         print(f"Archivo: reaccionó al evento: state: {observable._state}")
         self.observer_view.lbl_state.setText(f"Temperatura: {observable._state}°")
+        self.controller.save(self.tipo, "Temperatura", observable._state)
 
 class Laptop(Observer):
+    @property
+    def controller(self) -> Controller:
+        return self._controller
+
+    @controller.setter
+    def controller(self, valor):
+        self._controller = valor
+
     @property
     def observer_view(self) -> ObserverView:
         return self._observer_view
@@ -83,14 +101,23 @@ class Laptop(Observer):
     @observer_view.setter
     def observer_view(self, valor):
         self._observer_view = valor
-        tipo = type(self)
-        self._observer_view.lbl_display.setText(f"{tipo.__name__} display")
+        self.tipo = type(self).__name__
+        self._observer_view.lbl_display.setText(f"{self.tipo} display")
 
     def update(self, observable: Observable) -> None:
         print(f"laptop: reaccionó al evento: state: {observable._state}")
         self.observer_view.lbl_state.setText(f"Temperatura: {observable._state}°")
+        self.controller.save(self.tipo, "Temperatura", observable._state)
 
 class Telefono(Observer):
+    @property
+    def controller(self) -> Controller:
+        return self._controller
+
+    @controller.setter
+    def controller(self, valor):
+        self._controller = valor
+
     @property
     def observer_view(self) -> ObserverView:
         return self._observer_view
@@ -98,9 +125,10 @@ class Telefono(Observer):
     @observer_view.setter
     def observer_view(self, valor):
         self._observer_view = valor
-        tipo = type(self)
-        self._observer_view.lbl_display.setText(f"{tipo.__name__} display")
+        self.tipo = type(self).__name__
+        self._observer_view.lbl_display.setText(f"{self.tipo} display")
 
     def update(self, observable: Observable) -> None:
         print(f"Telefono: reaccionó al evento: state: {observable._state}")
         self.observer_view.lbl_state.setText(f"Temperatura: {observable._state}°")
+        self.controller.save(self.tipo, "Temperatura", observable._state)
