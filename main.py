@@ -6,11 +6,11 @@ from PyQt5 import QtWidgets
 from views.manager_view import ManagerView
 from views.observable_view import ObservableView
 from views.observer_view import ObserverView
-from obs_concrete.concrete_clases import ServicioMeteorologico
-from obs_concrete.concrete_clases import Telefono
-from obs_concrete.concrete_clases import Laptop
-from obs_concrete.concrete_clases import Archivo
-from modulos.controller import Controller
+from observer.concrete import ServicioMeteorologico
+from observer.concrete import Telefono
+from observer.concrete import Laptop
+from observer.concrete import Archivo
+from mvc.controller import Controller
 
 class ObserverWindow(QtWidgets.QMainWindow, ObserverView):
     def __init__(self, parent=None):

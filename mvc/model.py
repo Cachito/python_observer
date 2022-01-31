@@ -1,6 +1,10 @@
-from modulos.db_clases import db
-from modulos.db_clases import Observacion
+from mvc.datos import db
+from mvc.datos import Observacion
+from modulos.deco_clase import deco_clase
+import datetime
 
+
+@deco_clase
 class Model:
     """
     Model

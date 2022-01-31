@@ -29,5 +29,5 @@ class Observacion(BaseModel):
     Descripcion = CharField()
     Valor = IntegerField()
 
-db.connect()
-db.create_tables([Observacion])
+if not db.is_closed():
+    db.close()

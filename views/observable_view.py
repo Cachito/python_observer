@@ -11,10 +11,8 @@ from typing import List
 from PyQt5 import QtCore
 from PyQt5 import QtGui
 from PyQt5 import QtWidgets
-#from PyQt5.QtCore import Qt
-#from PyQt5.QtWidgets import QDialog
-from obs_abstract.abstract_clases import Observable
-from obs_abstract.abstract_clases import Observer
+from observer.abstract import Observable
+from observer.abstract import Observer
 
 class ObservableView(QtWidgets.QDialog):
     def setupUi(self, ObservableView):
