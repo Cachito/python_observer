@@ -78,6 +78,7 @@ class Archivo(Observer):
         self._observer_view = valor
         self.tipo = type(self).__name__
         self._observer_view.lbl_display.setText(f"{self.tipo} display")
+        self._observer_view.setWindowTitle(f"Observer {self.tipo}")
 
     def update(self, observable: Observable) -> None:
         self.observer_view.lbl_state.setText(f"Temperatura: {observable._state}°")
@@ -101,6 +102,7 @@ class Laptop(Observer):
         self._observer_view = valor
         self.tipo = type(self).__name__
         self._observer_view.lbl_display.setText(f"{self.tipo} display")
+        self._observer_view.setWindowTitle(f"Observer {self.tipo}")
 
     def update(self, observable: Observable) -> None:
         self.observer_view.lbl_state.setText(f"Temperatura: {observable._state}°")
@@ -124,6 +126,7 @@ class Telefono(Observer):
         self._observer_view = valor
         self.tipo = type(self).__name__
         self._observer_view.lbl_display.setText(f"{self.tipo} display")
+        self._observer_view.setWindowTitle(f"Observer {self.tipo}")
 
     def update(self, observable: Observable) -> None:
         self.observer_view.lbl_state.setText(f"Temperatura: {observable._state}°")
