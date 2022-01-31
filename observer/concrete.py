@@ -1,9 +1,10 @@
 from typing import List
 from random import randrange
-from obs_abstract.abstract_clases import Observer
-from obs_abstract.abstract_clases import Observable
+from observer.abstract import Observer
+from observer.abstract import Observable
 from views.observer_view import ObserverView
-from modulos.controller import Controller
+from mvc.controller import Controller
+
 
 class ServicioMeteorologico(Observable):
     """
@@ -26,11 +27,9 @@ class ServicioMeteorologico(Observable):
     """
 
     def attach(self, observer: Observer) -> None:
-        print("Observable: Adjunto un observador (ServicioMeteorologico).")
         self._observers.append(observer)
 
     def detach(self, observer: Observer) -> None:
-        print("Observable: Quito un observador (ServicioMeteorologico).")
         self._observers.remove(observer)
 
     """
@@ -81,7 +80,6 @@ class Archivo(Observer):
         self._observer_view.lbl_display.setText(f"{self.tipo} display")
 
     def update(self, observable: Observable) -> None:
-        print(f"Archivo: reaccionó al evento: state: {observable._state}")
         self.observer_view.lbl_state.setText(f"Temperatura: {observable._state}°")
         self.controller.save(self.tipo, "Temperatura", observable._state)
 
@@ -105,7 +103,6 @@ class Laptop(Observer):
         self._observer_view.lbl_display.setText(f"{self.tipo} display")
 
     def update(self, observable: Observable) -> None:
-        print(f"laptop: reaccionó al evento: state: {observable._state}")
         self.observer_view.lbl_state.setText(f"Temperatura: {observable._state}°")
         self.controller.save(self.tipo, "Temperatura", observable._state)
 
@@ -129,6 +126,5 @@ class Telefono(Observer):
         self._observer_view.lbl_display.setText(f"{self.tipo} display")
 
     def update(self, observable: Observable) -> None:
-        print(f"Telefono: reaccionó al evento: state: {observable._state}")
         self.observer_view.lbl_state.setText(f"Temperatura: {observable._state}°")
         self.controller.save(self.tipo, "Temperatura", observable._state)

@@ -1,4 +1,4 @@
-from modulos.model import Model
+from mvc.model import Model
 
 class Controller:
     def __init__(self):
