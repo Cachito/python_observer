@@ -1,3 +1,4 @@
+from ast import arg
 from typing import List
 from random import randrange
 from observer.abstract import Observer
@@ -7,6 +8,16 @@ from mvc.controller import Controller
 from modulos.deco_clase import deco_clase
 
 
+def deco_metodo(f):
+    def _deco_metodo(*args):
+        #print getattr(self, attribute)
+        if(args):
+            tipo = type(args[0]).__name__
+            print(f'actualizando observer {tipo}')
+
+        return f(*args)
+
+    return _deco_metodo
 @deco_clase
 class ServicioMeteorologico(Observable):
     """
@@ -61,7 +72,6 @@ class ServicioMeteorologico(Observable):
 
         print(f"Observable: Mi estado acaba de cambiar a: {self._state}")
         self.notify()
-
 class Archivo(Observer):
     @property
     def controller(self) -> Controller:
@@ -82,6 +92,7 @@ class Archivo(Observer):
         self._observer_view.lbl_display.setText(f"{self.tipo} display")
         self._observer_view.setWindowTitle(f"Observer {self.tipo}")
 
+    @deco_metodo
     def update(self, observable: Observable) -> None:
         self.observer_view.lbl_state.setText(f"Temperatura: {observable._state}°")
         self.controller.save(self.tipo, "Temperatura", observable._state)
@@ -106,6 +117,7 @@ class Laptop(Observer):
         self._observer_view.lbl_display.setText(f"{self.tipo} display")
         self._observer_view.setWindowTitle(f"Observer {self.tipo}")
 
+    @deco_metodo
     def update(self, observable: Observable) -> None:
         self.observer_view.lbl_state.setText(f"Temperatura: {observable._state}°")
         self.controller.save(self.tipo, "Temperatura", observable._state)
@@ -130,6 +142,7 @@ class Telefono(Observer):
         self._observer_view.lbl_display.setText(f"{self.tipo} display")
         self._observer_view.setWindowTitle(f"Observer {self.tipo}")
 
+    @deco_metodo
     def update(self, observable: Observable) -> None:
         self.observer_view.lbl_state.setText(f"Temperatura: {observable._state}°")
         self.controller.save(self.tipo, "Temperatura", observable._state)
