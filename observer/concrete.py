@@ -6,14 +6,28 @@ from observer.abstract import Observable
 from views.observer_view import ObserverView
 from mvc.controller import Controller
 from modulos.deco_clase import deco_clase
-
+import datetime
+import modulos.constantes as constant
 
 def deco_metodo(f):
     def _deco_metodo(*args):
-        #print getattr(self, attribute)
         if(args):
+            file = f'log_{datetime.datetime.now().strftime("%Y_%m_%d")}.txt'
             tipo = type(args[0]).__name__
-            print(f'actualizando observer {tipo}')
+            cadena = ''
+
+            if(tipo == 'ServicioMeteorologico') and len(args) > 1:
+                cadena = f'{datetime.datetime.now().strftime("%H:%M:%S")}'
+                cadena = f'{cadena} --> {tipo} opera sobre observer {type(args[1]).__name__}'
+
+            if(tipo != 'ServicioMeteorologico'):
+                cadena = f'{datetime.datetime.now().strftime("%H:%M:%S")}'
+                cadena = f'{cadena} --> actualizando observer {tipo}'
+#
+            if(len(cadena) > 0):
+                log = open(f'{constant.RUTA_LOG}{file}', 'a')
+                log.write(f'{cadena}\n')
+                log.close()
 
         return f(*args)
 
@@ -39,9 +53,11 @@ class ServicioMeteorologico(Observable):
     (clasificada por tipo de evento, etc.).
     """
 
+    @deco_metodo
     def attach(self, observer: Observer) -> None:
         self._observers.append(observer)
 
+    @deco_metodo
     def detach(self, observer: Observer) -> None:
         self._observers.remove(observer)
 
@@ -49,15 +65,17 @@ class ServicioMeteorologico(Observable):
     Métodos de gestión de suscripciones.
     """
 
+    @deco_metodo
     def notify(self) -> None:
         """
         Lanza una actualización en cada suscriptor.
         """
 
-        print("Observable: Notificación a los observadores...")
+        #print("Observable: Notificación a los observadores...")
         for observer in self._observers:
             observer.update(self)
 
+    @deco_metodo
     def informa_temperatura(self) -> None:
         """
         Por lo general, la lógica de suscripción es solo una fracción
@@ -67,10 +85,10 @@ class ServicioMeteorologico(Observable):
         importante está a punto de suceder (o después).
         """
 
-        print("\nObservable: Estoy haciendo algo importante.")
+        #print("\nObservable: Estoy haciendo algo importante.")
         self._state = randrange(-10, 40)
 
-        print(f"Observable: Mi estado acaba de cambiar a: {self._state}")
+        #print(f"Observable: Mi estado acaba de cambiar a: {self._state}")
         self.notify()
 class Archivo(Observer):
     @property

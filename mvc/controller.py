@@ -7,7 +7,7 @@ class Controller:
 
     def save(self, observador, descripcion, valor):
         try:
-            print("saving")
+            #print("saving")
             self.model.save(observador, descripcion, valor)
             return True
 
