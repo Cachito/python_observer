@@ -4,8 +4,10 @@ from observer.abstract import Observer
 from observer.abstract import Observable
 from views.observer_view import ObserverView
 from mvc.controller import Controller
+from modulos.deco_clase import deco_clase
 
 
+@deco_clase
 class ServicioMeteorologico(Observable):
     """
     El Observable posee algún estado importante y
@@ -65,13 +67,13 @@ class Archivo(Observer):
     def controller(self) -> Controller:
         return self._controller
 
-    @controller.setter
-    def controller(self, valor):
-        self._controller = valor
-
     @property
     def observer_view(self) -> ObserverView:
         return self._observer_view
+
+    @controller.setter
+    def controller(self, valor):
+        self._controller = valor
 
     @observer_view.setter
     def observer_view(self, valor):
@@ -89,13 +91,13 @@ class Laptop(Observer):
     def controller(self) -> Controller:
         return self._controller
 
-    @controller.setter
-    def controller(self, valor):
-        self._controller = valor
-
     @property
     def observer_view(self) -> ObserverView:
         return self._observer_view
+
+    @controller.setter
+    def controller(self, valor):
+        self._controller = valor
 
     @observer_view.setter
     def observer_view(self, valor):
@@ -113,13 +115,13 @@ class Telefono(Observer):
     def controller(self) -> Controller:
         return self._controller
 
-    @controller.setter
-    def controller(self, valor):
-        self._controller = valor
-
     @property
     def observer_view(self) -> ObserverView:
         return self._observer_view
+
+    @controller.setter
+    def controller(self, valor):
+        self._controller = valor
 
     @observer_view.setter
     def observer_view(self, valor):

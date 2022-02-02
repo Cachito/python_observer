@@ -1,4 +1,4 @@
-from msilib.schema import Control
+#from msilib.schema import Control
 import sys
 import random
 from PyQt5 import QtCore
@@ -59,6 +59,7 @@ class ManagerWindow(QtWidgets.QMainWindow, ManagerView):
         observer_window.observable = observable_obj
         observer_window.observer = observer_obj
         observer_obj.observer_view = observer_window
+        #observer_obj.set_observer(observer_window)
         observer_obj.controller = self.controller
 
         observable_obj.attach(observer_obj)
