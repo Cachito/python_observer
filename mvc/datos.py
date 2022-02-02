@@ -1,5 +1,7 @@
 from peewee import *
 from datetime import datetime
+from modulos.deco_clase import deco_clase
+
 
 db = SqliteDatabase('./db/observer_base.db')
 
@@ -28,6 +30,3 @@ class Observacion(BaseModel):
     Observador = CharField()
     Descripcion = CharField()
     Valor = IntegerField()
-
-if not db.is_closed():
-    db.close()

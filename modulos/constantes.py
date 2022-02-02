@@ -1,0 +1,1 @@
+RUTA_LOG = './log/'

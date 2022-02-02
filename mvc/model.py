@@ -1,7 +1,6 @@
 from mvc.datos import db
 from mvc.datos import Observacion
 from modulos.deco_clase import deco_clase
-import datetime
 
 
 @deco_clase
@@ -11,6 +10,9 @@ class Model:
     modelo del programa
     """
     def __init__(self):
+        if not db.is_closed():
+            db.close()
+
         try:
             db.connect()
             db.create_tables([Observacion])
