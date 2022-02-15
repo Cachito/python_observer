@@ -130,4 +130,4 @@ Agrega una línea por cada acción registrando, por ejemplo:
 15:15:00 --> actualizando observer Telefono
 ```
 
-El archivo de texto es siempre el mismo y lleva como nombre ```log_YYYY_mm_dd```. Su ubicación es una constante asegurando que ambos decoradores abrirán en modo append el mismo archivo para crear lineas.
+El archivo de texto es siempre el mismo y lleva como nombre ```log_YYYY_mm_dd.txt```. Su ubicación es una constante asegurando que ambos decoradores abrirán en modo append el mismo archivo para crear lineas.
