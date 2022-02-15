@@ -1,11 +1,11 @@
 # Estación Meteorológica
 Entrega final del nivel avanzado del curso Python 3 de Facultad Regional Buenos Aires de la Universidad Tecnológica Nacional.
 
-## Grupo de Trabajo
+### Grupo de Trabajo
 * Luis Elías Carro
 * Christian Maier
 
-## Profesores
+### Profesores
 * Gabriela Verónica Aquino
 * Brenda Abigail Barreto Aquino
 * Juan Marcelo Barreto Rodriguez
