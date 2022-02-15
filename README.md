@@ -78,7 +78,7 @@ Cada vez que desde el manager se agrega un observador, será de un tipo elegido 
 La vista del observador muestra la temperatura informada por el observable.
 El botón Detach elimina la instancia de la lista, esto se ve reflejado en la vista del Observable y se cierra a vista del Observer.
 
-## SQLite.
+## peewee / SQLite.
 Cada actualización hecha desde el Observable es guardada en una base de datos SQLite (./db/observer_base.db) creada por el programa mediante el uso peewee.
 
 Solo existe la tabla Observaciones con los campos:
