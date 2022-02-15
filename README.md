@@ -45,6 +45,7 @@ pip install peewee
 ## Pantalla Principal.
 
 ![](./docs/Manager.png)
+
 La pantalla principal (llamada Manager) permite:
 ### Iniciar Observable (Subject).
 Solo es posible iniciar uno.
