@@ -42,6 +42,13 @@ Es conveniente (aunque no necesario) crear un entorno virtual para instalar:
 
 ## Pantalla Principal.
 ![](./docs/Manager.png)
+La pantalla principal (llamada Manager) permite:
+### Iniciar ```Observable``` (```Subject```).
+Solo es posible iniciar uno.
+### Iniciar Observador (```Observer```).
+Solo se pueden iniciar si el Observable está iniciado, no antes. Pueden crearse tantas instancias de Observer como se desee.
+###Terminar.
+Al terminar el programa se cierran todas las ventanas abiertas.
 
 ## Preview
 Insert here an image of the preview if your project has one. The image can be into the project, you have to indicate the route and look like this.
