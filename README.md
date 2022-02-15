@@ -5,8 +5,23 @@ Entrega final del nivel avanzado del curso Python 3 de Facultad Regional Buenos 
 * Luis Elías Carro
 * Christian Maier
 
+## Profesores
+* Gabriela Verónica Aquino
+* Brenda Abigail Barreto Aquino
+* Juan Marcelo Barreto Rodriguez
+
 ## Descripción
 El programa simula una estación meteorológica que informa la temperatura. Distintos dispositivos pueden suscribirse (attach) para recibir esta información y cancelar esta suscripción (detach) cuando deseen hacerlo.
+
+Este proyecto cumple con:
+* Patrón de diseño Observer. 
+* Patrón de diseño MVC.
+* Uso de ORM peewee con SQLite.
+* Registro de log mediante decoradores.
+
+El módulo principal es ```main.py```.
+
+El patrón de diseño ```Observer``` se presenta con una clase ```Subject``` como el elemento a observar, al que los ```Observers``` se suscriben para recibir información. Nosotros decidimos llamar a esta clase ```Observable```.
 
 ## Demo
 If you want to see the demo of this proyect deployed, you can visit [Demo of the proyect](https://anabelisa.co/tips-para-hacer-un-buen-readme-md/)
