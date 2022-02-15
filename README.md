@@ -71,13 +71,16 @@ Los observadores pueden ser de tres tipos:
 * Telefono
 * Laptop
 
-El tipo está determinado por un valor aleatorio en el rango (1, 3). 
+El tipo está determinado por un valor aleatorio en el rango (1, 3).
+
 Cada vez que desde el manager se agrega un observador, será de un tipo elegido al azar y se abrirá una vista que lo representa.
+
 La vista del observador muestra la temperatura informada por el observable.
 El botón Detach elimina la instancia de la lista, esto se ve reflejado en la vista del Observable y se cierra a vista del Observer.
 
 ## SQLite.
 Cada actualización hecha desde el Observable es guardada en una base de datos SQLite (./db/observer_base.db) creada por el programa mediante el uso peewee.
+
 Solo existe la tabla Observaciones con los campos:
 
 | Nombre | Tipo | Aclaración |
@@ -93,6 +96,7 @@ Se implementaron dos decoradores: uno de clase y uno de método de clase.
 
 ### Decorador de clase:
 Ubicado en ```modulos/deco_clase.py``` registra en un archivo de texto Clase.Método o Clase.Atributo sin considerar parametros.
+
 Este decorador está asociado a las clases:
 * Controller
 * Model
@@ -108,6 +112,7 @@ Agrega una línea por cada acción registrando por ejemplo:
 
 ### Decorador de método de clase:
 Ubicado en observer/concrete.py registra en un archivo de texto la ejecución de los métodos decorados complementando al decorador de clase.
+
 Se asocia los métodos:
 * ServicioMeteorologico.attach
 * ServicioMeteorologico.detach
