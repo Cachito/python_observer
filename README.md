@@ -32,13 +32,15 @@ El patrón de diseño ```Observer``` se presenta con una clase ```Subject``` com
 
 ## Requerimientos.
 Es conveniente (aunque no necesario) crear un entorno virtual para instalar:
-```pip install SIP```
-```pip install PyQt5```
-```pip install pyqt5-tools```
-```pip install PySide2```
-```pip install QT-PyQt-PySide-Custom-Widgets```
-```pip install pyqt5-tools```
-```pip install peewee```
+```
+pip install SIP
+pip install PyQt5
+pip install pyqt5-tools
+pip install PySide2
+pip install QT-PyQt-PySide-Custom-Widgets
+pip install pyqt5-tools
+pip install peewee
+```
 
 ## Pantalla Principal.
 ![](./docs/Manager.png)
