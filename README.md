@@ -23,22 +23,26 @@ El módulo principal es ```main.py```.
 
 El patrón de diseño ```Observer``` se presenta con una clase ```Subject``` como el elemento a observar, al que los ```Observers``` se suscriben para recibir información. Nosotros decidimos llamar a esta clase ```Observable```.
 
-## Demo
-If you want to see the demo of this proyect deployed, you can visit [Demo of the proyect](https://anabelisa.co/tips-para-hacer-un-buen-readme-md/)
+## Fuentes Consultadas.
+* Documentos y videos entregados en este curso.
+* [Observer Pattern: Christopher Okhravi](https://youtu.be/_BpmfnqjgzQ)
+* [Observer method – Python Design Patterns](https://www.geeksforgeeks.org/observer-method-python-design-patterns/#:~:text=The%20observer%20method%20is%20a,object%20that%20they%20are%20observing.)
+* [Creating additional windows](https://www.pythonguis.com/tutorials/creating-multiple-windows/)
+* [Having trouble opening multiple windows in PyQt5](https://stackoverflow.com/questions/52797269/having-trouble-opening-multiple-windows-in-pyqt5)
 
-## How to clone
-If you have special requirements, you have to list it step by step.
-* This is the first step
-* Then you have to do this
-* Finally do this
+## Requerimientos.
+Es conveniente (aunque no necesario) crear un entorno virtual para instalar:
+```pip install SIP```
+```pip install PyQt5```
+```pip install pyqt5-tools```
+```pip install PySide2```
+```pip install QT-PyQt-PySide-Custom-Widgets```
+```pip install pyqt5-tools```
+```pip install peewee```
 
-Markdown has enumation and nested lists.
+## Pantalla Principal.
+![](./docs/Manager.png)
 
-## Installation
-To install and run this proyect just type and execute
-```bash
-npm install
-```
 ## Preview
 Insert here an image of the preview if your project has one. The image can be into the project, you have to indicate the route and look like this.
 
