@@ -43,19 +43,85 @@ pip install peewee
 ```
 
 ## Pantalla Principal.
+
 ![](./docs/Manager.png)
 La pantalla principal (llamada Manager) permite:
-### Iniciar ```Observable``` (```Subject```).
+### Iniciar Observable (Subject).
 Solo es posible iniciar uno.
-### Iniciar Observador (```Observer```).
+### Iniciar Observador (Observer).
 Solo se pueden iniciar si el Observable está iniciado, no antes. Pueden crearse tantas instancias de Observer como se desee.
-###Terminar.
+### Terminar.
 Al terminar el programa se cierran todas las ventanas abiertas.
 
-## Preview
-Insert here an image of the preview if your project has one. The image can be into the project, you have to indicate the route and look like this.
+## Observable (Subject).
 
-![](/preview.jpg)
+![](./docs/Observable.png)
 
-### Notes
-If you want to learn all about markdown i recommend you visit the site [markdown.es](https://markdown.es/sintaxis-markdown/)
+La vista del observable lleva la cuenta de los observadores suscriptos y el botón Update Temperatura informa a cada uno un valor de temperatura aleatorio en el rango (-10, 40).
+
+## Observador (Observer).
+
+![](./docs/Obervador-Archivo.png)
+![](./docs/Obervador-Telefono.png)
+![](./docs/Obervador-Laptop.png)
+
+Los observadores pueden ser de tres tipos:
+* Archivo
+* Telefono
+* Laptop
+
+El tipo está determinado por un valor aleatorio en el rango (1, 3). 
+Cada vez que desde el manager se agrega un observador, será de un tipo elegido al azar y se abrirá una vista que lo representa.
+La vista del observador muestra la temperatura informada por el observable.
+El botón Detach elimina la instancia de la lista, esto se ve reflejado en la vista del Observable y se cierra a vista del Observer.
+
+## SQLite.
+Cada actualización hecha desde el Observable es guardada en una base de datos SQLite (./db/observer_base.db) creada por el programa mediante el uso peewee.
+Solo existe la tabla Observaciones con los campos:
+
+| Nombre | Tipo | Aclaración |
+| :---: | :---: | :---: |
+| Id | INT AUTOINCREMENT | Creado por el ORM |
+| Fecha | DATETIME | Guarda la fecha de creación del registro |
+| Observador | TEXT | El tipo de observador que guarda el registro |
+| Descripcion | TEXT | Siempre dice "Temperatura" |
+| Valor | INT | Valor informado por el observable|
+
+## Decoradores.
+Se implementaron dos decoradores: uno de clase y uno de método de clase.
+
+### Decorador de clase:
+Ubicado en ```modulos/deco_clase.py``` registra en un archivo de texto Clase.Método o Clase.Atributo sin considerar parametros.
+Este decorador está asociado a las clases:
+* Controller
+* Model
+* ServicioMeteorologico
+
+Agrega una línea por cada acción registrando por ejemplo:
+```
+15:14:33 --> ServicioMeteorologico.attach
+15:14:33 --> ServicioMeteorologico._observers
+15:15:00 --> Controller.save
+15:15:00 --> Model.save
+```
+
+### Decorador de método de clase:
+Ubicado en observer/concrete.py registra en un archivo de texto la ejecución de los métodos decorados complementando al decorador de clase.
+Se asocia los métodos:
+* ServicioMeteorologico.attach
+* ServicioMeteorologico.detach
+* ServicioMeteorologico.notify
+* ServicioMeteorologico.informa_temperatura
+* Archivo.update
+* Laptop.update
+* Telefono.update
+
+Agrega una línea por cada acción registrando, por ejemplo:
+```
+15:15:00 --> ServicioMeteorologico.informa_temperatura
+15:15:00 --> actualizando observer Archivo
+15:15:00 --> actualizando observer Laptop
+15:15:00 --> actualizando observer Telefono
+```
+
+El archivo de texto es siempre el mismo y lleva como nombre ```log_YYYY_mm_dd```. Su ubicación es una constante asegurando que ambos decoradores abrirán en modo append el mismo archivo para crear lineas.
